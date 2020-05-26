@@ -1,2 +1,3 @@
 # UniMatch
-An wonderful app for searching and comparing US universities. Help you match your best fit collge
+A wonderful app for searching and comparing Top 100 US universities.
+Help you match your best fit college

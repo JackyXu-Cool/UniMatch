@@ -16,6 +16,11 @@ def get_basic_school_by_name(name):
     row = getData(name, "name")
     return jsonify(formatBasic(row))
 
+@app.route("/full/schools/byname/<string:name>")
+def get_full_school_by_name(name):
+    row = getData(name, "name")
+    return jsonify(formatFull(row))
+
 @app.route("/score/schools/byid/<int:opeid>")
 def get_score_school_by_id(opeid):
     row = getData(opeid, "OPEID")
@@ -25,6 +30,11 @@ def get_score_school_by_id(opeid):
 def get_basic_school_by_id(opeid):
     row = getData(opeid, "OPEID")
     return jsonify(formatBasic(row))
+
+@app.route("/full/schools/byid/<int:opeid>")
+def get_full_school_by_id(opeid):
+    row = getData(opeid, "OPEID")
+    return jsonify(formatFull(row))
 
 
 if __name__ == "__main__":
