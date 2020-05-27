@@ -2,3 +2,4 @@ __pycache__
 venv
 data
 design
+user-data.db

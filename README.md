@@ -23,8 +23,8 @@ A wonderful app for searching and comparing Top 100 US universities, and helping
     - /full/**int:opeid**
     - /score/**int:opeid**
 #### POST
-- /signup
-- /login
+- /signup (username, password, highschool, dreamschool required)
+- /auth (username, password required)
 
 
 ### JSON Format

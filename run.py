@@ -1,9 +1,18 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from flask_jwt import JWT
+from flask_restful import Api
+
 from helper.formatHelper import formatScore, formatBasic, formatFull
 from helper.dataHelper import getData
+from resource.user import UserRegister
+from security import authenticate, identiy
 
 app = Flask(__name__)
 app.secret_key = "00001"
+
+api = Api(app)
+
+jwt = JWT(app, authenticate, identiy)  ## /auth endpoint
 
 ## Get schools by name
 @app.route("/schools/byname/score/<string:name>")
@@ -36,6 +45,8 @@ def get_basic_school_by_id(opeid):
 def get_full_school_by_id(opeid):
     row = getData(opeid, "OPEID")
     return jsonify(formatFull(row))
+
+api.add_resource(UserRegister, "/signup")
 
 
 if __name__ == "__main__":
