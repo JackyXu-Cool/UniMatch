@@ -27,8 +27,8 @@ A wonderful app for searching and comparing Top 100 US universities, and helping
 - /auth (username, password required)
 
 Note:  <br />
-200~299: good status code <br />
-400~499: bad request
+200 to 299: good status code <br />
+400 to 499: bad request
 
 ### JSON Format
 -----
