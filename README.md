@@ -26,6 +26,9 @@ A wonderful app for searching and comparing Top 100 US universities, and helping
 - /signup (username, password, highschool, dreamschool required)
 - /auth (username, password required)
 
+Note:  <br />
+200~299: good status code <br />
+400~499: bad request
 
 ### JSON Format
 -----
@@ -104,11 +107,12 @@ A wonderful app for searching and comparing Top 100 US universities, and helping
 
 ### Authors
 ---------------
-- Junqi Xu  jackyxu8832@gmail.com
+- Junqi Xu  jxu477@gatech.edu
 - Chengpo Yan   
 
 ### LICENSE
 ---------------
+This project is licensed under the MIT License
 
 ### Credits
 ---------------

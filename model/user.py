@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, uuid
 
 class User(object):
     def __init__(self, id, username, password, highschool, dreamschool):
@@ -17,11 +17,23 @@ class User(object):
         cursor = connection.cursor()
 
         query = "INSERT INTO users VALUES (NULL,?,?,?,?)"
-        cursor.execute(query, (username, password, highschool, dreamschool))
+        cursor.execute(query, (username, password, highschool, dreamschool,))
 
         connection.commit()
         connection.close()
         return {"message": "new user has been successfully stored", "status code": 201}
+
+    @classmethod
+    def update(cls, username, dreamschool):
+        connection = sqlite3.connect("user-data.db")
+        cursor = connection.cursor()
+
+        query = "UPDATE users SET dreamschool=? where username=?"
+        cursor.execute(query, (dreamschool, username))
+
+        connection.commit()
+        connection.close()
+        return {"message": "successfully updated", "status code": "201"}
 
     @classmethod
     def find_by_username(cls, username):
