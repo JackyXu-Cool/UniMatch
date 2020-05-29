@@ -22,9 +22,11 @@ A wonderful app for searching and comparing Top 100 US universities, and helping
     - /basic/**int:opeid**
     - /full/**int:opeid**
     - /score/**int:opeid**
+- /users/**string:username**
 #### POST
 - /signup (username, password, highschool, dreamschool required)
 - /auth (username, password required)
+- /users/**string:username**  _**(jwt_required)**_
 
 Note:  <br />
 200 to 299: good status code <br />
