@@ -13,11 +13,17 @@ class User(object):
         if User.find_by_username(username):
             return {"message": "user already exists", "status code": 400}
 
-        connection = sqlite3.connect("user-data.db")
-        cursor = connection.cursor()
+        try:
+            connection = sqlite3.connect("user-data.db")
+            cursor = connection.cursor()
+        except:
+            return {"message": "fail to connect to the datbase", "status code": 500}
 
         query = "INSERT INTO users VALUES (NULL,?,?,?,?)"
-        cursor.execute(query, (username, password, highschool, dreamschool,))
+        try:
+            cursor.execute(query, (username, password, highschool, dreamschool,))
+        except:
+            return {"message": "fail to store to the database", "status code": 500}
 
         connection.commit()
         connection.close()
@@ -25,25 +31,37 @@ class User(object):
 
     @classmethod
     def update(cls, username, dreamschool):
-        connection = sqlite3.connect("user-data.db")
-        cursor = connection.cursor()
+        try:
+            connection = sqlite3.connect("user-data.db")
+            cursor = connection.cursor()
+        except:
+            return {"message": "fail to connect to the datbase", "status code": 500}
 
         query = "UPDATE users SET dreamschool=? where username=?"
-        cursor.execute(query, (dreamschool, username))
+        try:
+            cursor.execute(query, (dreamschool, username))
+        except:
+            return {"message": "fail to store to the database", "status code": 500}
 
         connection.commit()
         connection.close()
-        return {"message": "successfully updated", "status code": "201"}
+        return {"message": "successfully updated", "status code": 201}
 
     @classmethod
     def find_by_username(cls, username):
-        connection = sqlite3.connect("user-data.db")
-        cursor = connection.cursor()
+        try:
+            connection = sqlite3.connect("user-data.db")
+            cursor = connection.cursor()
+        except:
+            return {"message": "fail to connect to the datbase", "status code": 500}
 
         query = "SELECT * FROM users where username=?"
-        result = cursor.execute(query, (username, ))
-        row = result.fetchone()
+        try:
+            result = cursor.execute(query, (username, ))
+        except:
+            return {"message": "fail to search in the database", "status code": 500}
 
+        row = result.fetchone()
         if row:
             user = cls(*row)
         else:
@@ -54,13 +72,19 @@ class User(object):
     
     @classmethod
     def find_by_id(cls, id):
-        connection = sqlite3.connect("user-data.db")
-        cursor = connection.cursor()
+        try:
+            connection = sqlite3.connect("user-data.db")
+            cursor = connection.cursor()
+        except:
+            return {"message": "fail to connect to the datbase", "status code": 500}
 
         query = "SELECT * FROM users where id=?"
-        result = cursor.execute(query, (id, ))
-        row = result.fetchone()
+        try:
+            result = cursor.execute(query, (id, ))
+        except:
+            return {"message": "fail to search in the database", "status code": 500}
 
+        row = result.fetchone()
         if row:
             user = cls(*row)
         else:

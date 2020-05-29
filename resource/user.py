@@ -28,6 +28,7 @@ class UserInfo(Resource):
     parser.add_argument("dreamschool",
         type=str, required=True, 
         help="cannot leave blank")
+
     def get(self, username):
         user = User.find_by_username(username)
         if user:
