@@ -1,12 +1,8 @@
-import React from 'react';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div>
-      Hello world! Jesse
-      <img src="./assets/school-image/215500.jpg" width="300" alt="harvard"/>
-    </div>
-  );
-}
+const App = (props) => {
+  return <div className="App"></div>;
+};
 
 export default App;
