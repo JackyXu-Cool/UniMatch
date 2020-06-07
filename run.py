@@ -6,6 +6,7 @@ from helper.formatHelper import formatScore, formatBasic, formatFull
 from helper.dataHelper import getData
 from resource.user import UserRegister, UserInfo
 from security import authenticate, identiy
+from create_table import create_table
 
 app = Flask(__name__)
 app.secret_key = "00001"
@@ -50,4 +51,5 @@ api.add_resource(UserRegister, "/signup")
 api.add_resource(UserInfo, "/user/<string:username>")
 
 if __name__ == "__main__":
+    create_table()
     app.run(port=5000, debug=True)
