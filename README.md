@@ -107,6 +107,35 @@ Note:  <br />
 - _"graduates"_ is the number of graduate students
 - _"attendance fee"_ is the estimated cost a student will spend in an academic year (tuition, personal expense...)
 
+### How to run Backend
+-------------
+Install virtual environment
+```shell
+pip install virtualenv
+
+virtualenv venv --python=python3.7
+```
+_Note that python3.7 is my version. Change it to your current version_ <br />
+
+To activate it:
+```shell
+./venv/Scripts/activate
+```
+To install necessary python library after you activate the virtual environment:
+```shell
+pip install Flask
+pip install Flask-RESTful
+pip install Flask-JWT
+```
+Run backend:
+```
+python run.py
+```
+To quit:
+```
+deactivate
+```
+
 ### Authors
 ---------------
 - Junqi Xu  jxu477@gatech.edu
