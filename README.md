@@ -136,6 +136,13 @@ To quit:
 deactivate
 ```
 
+### Linting
+Run the following before commiting your code. <br />
+Indentation should be 2 spaces
+```
+npm run lint
+```
+
 ### Authors
 ---------------
 - Junqi Xu  jxu477@gatech.edu

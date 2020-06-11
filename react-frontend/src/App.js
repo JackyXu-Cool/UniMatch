@@ -7,25 +7,25 @@ import "./App.css";
 
 const App = () => {
   return (
-  <div>
-    <Router>
-      <Switch>
-        <Route path="/" exact>
-          <CollegeSearch />
-        </Route>
-        <Route path="/auth" exact>
-          <Auth />
-        </Route>
-        <Route path="/college/:opeid">
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <CollegeSearch />
+          </Route>
+          <Route path="/auth" exact>
+            <Auth />
+          </Route>
+          <Route path="/college/:opeid">
 
-        </Route>
-        <Route path="/college/compare">
+          </Route>
+          <Route path="/college/compare">
 
-        </Route>
-        <Redirect to="/" />
-      </Switch>
-    </Router>
-  </div>);
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </Router>
+    </div>);
 };
 
 export default App;
