@@ -19,11 +19,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup Node.js environment
-      working-directory: react-frontend
       uses: actions/setup-node@v1.4.2
+      working-directory: ./react-frontend
     - name: install npm
-      working-directory: react-frontend 
       run: npm install
+      working-directory: react-frontend 
     - name: quality test
-      working-directory: react-frontend
       run: npm run lint
+      working-directory: react-frontend
