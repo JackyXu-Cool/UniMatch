@@ -138,7 +138,9 @@ deactivate
 
 ### Linting
 Run the following before commiting your code. <br />
-Indentation should be 2 spaces
+Some custom linting rules:
+- Indentation should be 2 spaces
+- Use double quotes instead of single quotes
 ```
 npm run lint
 ```

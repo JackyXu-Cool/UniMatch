@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const CollegeSearch = (props) => {
   return <h1>Welcome to College Search</h1>
