@@ -1,31 +1,61 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import CollegeSearch from "./colleges/pages/collegeSearch";
-import Auth from "./users/pages/Auth";
+import { Route, Switch } from "react-router-dom";
+import { TransitionGroup, Transition } from "react-transition-group";
 
-import "./App.css";
+import Layout from "./components/Layout/Layout";
+import CollegeSearch from "./containers/collegeSearch/collegeSearch";
+import Auth from "./containers/users/Auth";
 
-const App = () => {
+import classes from "./App.module.css";
+
+const App = (props) => {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            <CollegeSearch />
-          </Route>
-          <Route path="/auth" exact>
-            <Auth />
-          </Route>
-          <Route path="/college/:opeid">
+    <div className={classes.App}>
+      <Layout>
+        <Route
+          render={({ location }) => {
+            const { key } = location;
 
-          </Route>
-          <Route path="/college/compare">
+            const duration = 500;
 
-          </Route>
-          <Redirect to="/" />
-        </Switch>
-      </Router>
-    </div>);
+            const defaultStyle = {
+              transition: `opacity ${duration}ms ease-in-out`,
+              opacity: 0,
+            };
+
+            const transitionStyles = {
+              entering: { opacity: 0 },
+              entered: { opacity: 1 },
+              exiting: { opacity: 1 },
+              exited: { opacity: 0 },
+            };
+
+            return (
+              <TransitionGroup component={null} appear>
+                <Transition key={key} timeout={duration}>
+                  {(state) => (
+                    <div
+                      style={{
+                        ...defaultStyle,
+                        ...transitionStyles[state],
+                      }}
+                    >
+                      <Switch location={location}>
+                        <Route path="/college/compare" />
+                        <Route path="/college" />
+                        <Route path="/auth" component={Auth} />
+                        <Route path="/" component={CollegeSearch} />
+                      </Switch>
+                    </div>
+                  )}
+                </Transition>
+              </TransitionGroup>
+            );
+          }}
+        />
+      </Layout>
+    </div>
+  );
 };
 
 export default App;
