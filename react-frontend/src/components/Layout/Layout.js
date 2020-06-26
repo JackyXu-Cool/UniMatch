@@ -9,7 +9,7 @@ const Layout = (props) => {
       <nav>
         <Toolbar isAuth={props.isAuthenticated} />
       </nav>
-      <main className={classes.Content}>{props.children}</main>
+      <main>{props.children}</main>
     </div>
   );
 };

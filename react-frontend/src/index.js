@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
@@ -13,13 +13,11 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : null || compose;
 
-const sagaMiddleware = createSagaMiddleware();
-
 const rootReducer = combineReducers({});
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware))
+  composeEnhancers(applyMiddleware(thunk))
 );
 
 ReactDOM.render(

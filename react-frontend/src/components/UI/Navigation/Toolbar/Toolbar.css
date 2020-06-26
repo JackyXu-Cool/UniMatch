@@ -1,0 +1,5 @@
+a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.5s ease-out;
+}
