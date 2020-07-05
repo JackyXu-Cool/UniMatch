@@ -2,7 +2,7 @@
 A wonderful app for searching and comparing Top 100 US universities, and helping you match your best fit college
 (see the college [list](https://www.usnews.com/best-colleges/rankings/national-universities) here)
 
-![ReactJS CI](https://github.com/JackyXu-Cool/UniMatch/workflows/ReactJS%20CI/badge.svg)
+![quality](https://github.com/JackyXu-Cool/UniMatch/workflows/quality/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ### API
