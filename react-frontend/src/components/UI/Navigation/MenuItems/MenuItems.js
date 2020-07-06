@@ -6,8 +6,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SchoolIcon from "@material-ui/icons/School";
-import AssignmentIcon from "@material-ui/icons/Assignment";
+import ChildCareIcon from "@material-ui/icons/ChildCare";
 import MenuIcon from "@material-ui/icons/Menu";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -40,14 +41,22 @@ const MenuItems = (props) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {["Colleges", "MyColleges"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <SchoolIcon /> : <AssignmentIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <SchoolIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Colleges"}>
+            <Link to="/" />
+          </ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <ChildCareIcon />
+          </ListItemIcon>
+          <ListItemText primary={"MyProfile"}>
+            <Link to="/myprofile" />
+          </ListItemText>
+        </ListItem>
       </List>
     </div>
   );
