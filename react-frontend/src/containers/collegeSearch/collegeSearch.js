@@ -10,7 +10,7 @@ const CollegeSearch = (props) => {
   const { onFetchCollege } = props;
 
   useEffect(() => {
-    onFetchCollege(262700);
+    onFetchCollege(217800);
   }, [onFetchCollege]);
 
   return <div className={classes.MainLayout}></div>;

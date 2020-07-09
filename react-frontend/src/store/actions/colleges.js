@@ -26,8 +26,7 @@ export const fetchCollege = (opeid) => {
   return async (dispatch) => {
     dispatch(fetchCollegesStart());
     try {
-      const response = await axiosUni.get(`/basic/${opeid}`);
-      console.log(response);
+      const response = await axiosUni.get("/basic/217800");
       dispatch(fetchCollegeSuccess(response));
     } catch (error) {
       console.log(error);

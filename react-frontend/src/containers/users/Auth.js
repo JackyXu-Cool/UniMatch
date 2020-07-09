@@ -2,11 +2,9 @@ import React, { useState, Fragment } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Button } from "@material-ui/core";
 import { connect } from "react-redux";
-import axiosUni from "../../axios-Uni";
 import { Redirect } from "react-router-dom";
 
 import * as actionCreators from "../../store/actions/index";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.module.css";
 
@@ -166,7 +164,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(
-  mapStateToPorps,
-  mapDispatchToProps
-)(withErrorHandler(React.memo(Auth), axiosUni));
+export default connect(mapStateToPorps, mapDispatchToProps)(React.memo(Auth));
