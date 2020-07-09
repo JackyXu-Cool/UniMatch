@@ -104,7 +104,7 @@ Note:  <br />
 
 ### How to run Backend
 -------------
-Install virtual environment
+Install virtual environment inside the "./python-backend"
 ```shell
 pip install virtualenv
 
