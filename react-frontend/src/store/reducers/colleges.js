@@ -2,7 +2,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  colleges: [],
+  college: null,
   loading: false,
   error: null,
 };
@@ -18,7 +18,7 @@ const fetchCollegesStart = (state, action) => {
 const fetchCollegeSuccess = (state, action) => {
   return {
     ...state,
-    colleges: action.colleges,
+    college: action.college,
     loading: false,
     error: null,
   };

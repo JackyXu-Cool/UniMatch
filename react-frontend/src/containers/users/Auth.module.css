@@ -4,20 +4,15 @@
   margin: auto;
   display: flex;
   flex-flow: column;
-  background-color: greenyellow;
+  background-color: inherit;
   transition: all 0.3s ease-out;
-}
-
-.Auth:hover {
-  background-color: #68fd4b;
 }
 
 .AuthCard {
   margin: auto;
   width: 50%;
-  height: 80%;
-  background-color: white;
-  border-radius: 10px;
+  height: 70%;
+  background-color: inherit;
   transition: all 0.3s ease-out;
 }
 

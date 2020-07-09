@@ -18,8 +18,9 @@ const Auth = (props) => {
     if (isSignUp) {
       props.onSubmitHandler({
         userName: data.userName,
-        email: data.email,
         password: data.password,
+        highschool: data.highschool,
+        dreamschool: data.dreamschool,
         isSignUp: isSignUp,
       });
     } else {
@@ -42,17 +43,32 @@ const Auth = (props) => {
       <Fragment>
         <Controller
           as={TextField}
-          placeholder="Your Username here"
+          placeholder="Your Highschool here"
           inputProps={{
-            maxLength: 20,
+            maxLength: 50,
             pattern: "^[A-Za-z]+$",
           }}
           required
-          name="userName"
+          name="highschool"
           control={control}
           defaultValue=""
         />
         <br />
+        <hr />
+        <Controller
+          as={TextField}
+          placeholder="Your Dreamschool here"
+          inputProps={{
+            maxLength: 50,
+            pattern: "^[A-Za-z]+$",
+          }}
+          required
+          name="dreamschool"
+          control={control}
+          defaultValue=""
+        />
+        <br />
+        <hr />
       </Fragment>
     );
   }
@@ -79,21 +95,20 @@ const Auth = (props) => {
           <Spinner />
         ) : (
           <form className={classes.Form} onSubmit={handleSubmit(onSubmit)}>
-            {signUp}
             <Controller
               as={TextField}
-              placeholder="Your Email here"
-              type="email"
+              placeholder="Your Username here"
               inputProps={{
-                title: "Please enter the correct email",
-                pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
+                maxLength: 20,
+                pattern: "^[A-Za-z]+$",
               }}
               required
-              name="email"
+              name="userName"
               control={control}
               defaultValue=""
             />
             <br />
+            <hr />
             <Controller
               as={TextField}
               placeholder="Your Password here"
@@ -109,10 +124,13 @@ const Auth = (props) => {
               defaultValue=""
             />
             <br />
+            <hr />
+            {signUp}
             <Button type="submit" color="secondary" variant="contained">
               {isSignUp ? "Sign Up" : "Login"}
             </Button>
             <br />
+            <hr />
             <Button
               color="primary"
               variant="outlined"
@@ -120,7 +138,6 @@ const Auth = (props) => {
             >
               Switch To {isSignUp ? "Login" : "Sign Up"}
             </Button>
-            <br />
           </form>
         )}
       </Fragment>

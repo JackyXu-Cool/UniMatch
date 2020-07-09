@@ -5,6 +5,7 @@ import { TransitionGroup, Transition } from "react-transition-group";
 import Layout from "./components/Layout/Layout";
 import CollegeSearch from "./containers/collegeSearch/collegeSearch";
 import Auth from "./containers/users/Auth";
+import Logout from "./containers/users/Logout/Logout";
 
 import classes from "./App.module.css";
 
@@ -42,7 +43,8 @@ const App = (props) => {
                     >
                       <Switch location={location}>
                         <Route path="/college/compare" />
-                        <Route path="/college" />
+                        <Route path="/myprofile" />
+                        <Route path="/logout" component={Logout} />
                         <Route path="/auth" component={Auth} />
                         <Route path="/" component={CollegeSearch} />
                       </Switch>
