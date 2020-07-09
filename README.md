@@ -121,6 +121,7 @@ To install necessary python library after you activate the virtual environment:
 pip install Flask
 pip install Flask-RESTful
 pip install Flask-JWT
+pip install -U flask-cors
 ```
 Run backend:
 ```
