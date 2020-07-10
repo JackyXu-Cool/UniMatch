@@ -65,7 +65,8 @@ Note:  <br />
   "transfer-rate": 0.061,
   "tuition_IN": 18964,
   "tuition_OUT": 38584,
-  "url": "www.mines.edu"
+  "url": "www.mines.edu",
+  "image": "https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/sanmateoca/shutterstock_4189008910-9b68011a5056a36_9b6802fa-5056-a36a-0bbb53c8e971b411.jpg"
 ```
 
 #### Basic college information
