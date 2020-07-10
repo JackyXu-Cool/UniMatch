@@ -4,7 +4,7 @@ from flask_restful import Api
 from flask_cors import CORS
 
 from helper.formatHelper import formatScore, formatBasic, formatFull
-from helper.dataHelper import getData
+from helper.dataHelper import getData, getAll
 from resource.user import UserRegister, UserInfo
 from security import authenticate, identiy
 from create_table import create_table
@@ -49,6 +49,15 @@ def get_basic_school_by_id(opeid):
 def get_full_school_by_id(opeid):
     row = getData(opeid, "OPEID")
     return jsonify(formatFull(row))
+
+## Get all data from the databse
+@app.route("/schools/all")
+def get_all_data():
+    rows = getAll()
+    result = []
+    for row in rows:
+        result.append(formatFull(row))
+    return jsonify(result)
 
 api.add_resource(UserRegister, "/signup")
 api.add_resource(UserInfo, "/user/<string:username>")

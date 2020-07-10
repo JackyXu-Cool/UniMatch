@@ -33,7 +33,8 @@ def formatFull(data):
         "tuition_OUT": data[37],
         "retention-rate": data[38],
         "graduates": data[40],
-        "transfer-rate": data[41]
+        "transfer-rate": data[41],
+        "image": data[42]
     }
 
 def formatBasic(data):
