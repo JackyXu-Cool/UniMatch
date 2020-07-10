@@ -29,7 +29,8 @@ export const auth = (data, signup) => {
     dispatch(authStart());
     try {
       let response;
-      if (data.isSignup) {
+      if (signup) {
+        console.log(data);
         response = await axiosUni.post("/signup", data);
       } else {
         response = await axiosUni.post("/auth", data);
