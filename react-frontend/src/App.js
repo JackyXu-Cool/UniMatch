@@ -44,6 +44,7 @@ const App = (props) => {
                       <Switch location={location}>
                         <Route path="/college/compare" />
                         <Route path="/myprofile" />
+                        <Route path="/detail/:rank" />
                         <Route path="/logout" component={Logout} />
                         <Route path="/auth" component={Auth} />
                         <Route path="/" component={CollegeSearch} />

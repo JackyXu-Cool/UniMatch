@@ -1,3 +1,8 @@
 .Layout {
   margin: 0;
 }
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+}

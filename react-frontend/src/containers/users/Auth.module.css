@@ -1,11 +1,15 @@
 .Auth {
   width: auto;
-  height: auto;
+  height: 90vh;
   margin: auto;
   display: flex;
   flex-flow: column;
   background-color: inherit;
   transition: all 0.3s ease-out;
+}
+
+.AuthSignup {
+  background-color: white;
 }
 
 .AuthCard {
@@ -29,7 +33,9 @@
   justify-content: space-between;
 }
 
-.AuthCard input {
+.AuthCard input,
+.AuthCard button {
+  margin-top: 1rem;
   padding: 1vh;
 }
 

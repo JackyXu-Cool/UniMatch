@@ -14,25 +14,33 @@ const Auth = (props) => {
   const { handleSubmit, control } = useForm();
   const onSubmit = (data) => {
     if (isSignUp) {
-      props.onSubmitHandler({
-        userName: data.userName,
-        password: data.password,
-        highschool: data.highschool,
-        dreamschool: data.dreamschool,
-        isSignUp: isSignUp,
-      });
+      props.onSubmitHandler(
+        {
+          username: data.userName,
+          password: data.password,
+          highschool: data.highschool,
+          dreamschool: data.dreamschool,
+        },
+        isSignUp
+      );
     } else {
-      props.onSubmitHandler({
-        email: data.email,
-        password: data.password,
-        isSignUp: isSignUp,
-      });
+      props.onSubmitHandler(
+        {
+          userName: data.userName,
+          password: data.password,
+        },
+        isSignUp
+      );
     }
   };
   const [isSignUp, setIsSignUp] = useState(true);
 
   const signUpChangeHandler = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+  };
+
+  const onConfirmFirstLogin = () => {
+    props.history.replace("/");
   };
 
   let signUp = null;
@@ -45,46 +53,44 @@ const Auth = (props) => {
           inputProps={{
             maxLength: 50,
             pattern: "^[A-Za-z]+$",
+            title: "Only letters can be used in this field",
           }}
           required
           name="highschool"
           control={control}
           defaultValue=""
         />
-        <br />
-        <hr />
         <Controller
           as={TextField}
           placeholder="Your Dreamschool here"
           inputProps={{
             maxLength: 50,
             pattern: "^[A-Za-z]+$",
+            title: "Only letters can be used in this field",
           }}
           required
           name="dreamschool"
           control={control}
           defaultValue=""
         />
-        <br />
-        <hr />
       </Fragment>
     );
   }
 
+  let mainClasses = [classes.Auth, classes.AuthSignup];
+
   let mainForm = (
     <Fragment>
       <CheckIcon />
-      <Button
-        color="primary"
-        variant="contained"
-        onClick={props.onConfirmFirstLogin}
-      >
+      <Button color="primary" variant="contained" onClick={onConfirmFirstLogin}>
         CONFIRM
       </Button>
     </Fragment>
   );
 
-  if (!props.isFirstLogin && !props.isFirstLoginLoading) {
+  if (!props.signUp) {
+    mainClasses.pop();
+    const pattern = isSignUp ? "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" : null;
     mainForm = (
       <Fragment>
         {props.isAuth && <Redirect to="/" />}
@@ -99,14 +105,13 @@ const Auth = (props) => {
               inputProps={{
                 maxLength: 20,
                 pattern: "^[A-Za-z]+$",
+                title: "Only letters can be used in this field",
               }}
               required
               name="userName"
               control={control}
               defaultValue=""
             />
-            <br />
-            <hr />
             <Controller
               as={TextField}
               placeholder="Your Password here"
@@ -114,21 +119,17 @@ const Auth = (props) => {
               inputProps={{
                 title:
                   "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters",
-                pattern: "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}",
+                pattern: pattern,
               }}
               required
               name="password"
               control={control}
               defaultValue=""
             />
-            <br />
-            <hr />
             {signUp}
             <Button type="submit" color="secondary" variant="contained">
               {isSignUp ? "Sign Up" : "Login"}
             </Button>
-            <br />
-            <hr />
             <Button
               color="primary"
               variant="outlined"
@@ -144,7 +145,7 @@ const Auth = (props) => {
 
   return (
     <Fragment>
-      <div className={classes.Auth}>
+      <div className={mainClasses.join(" ")}>
         <div className={classes.AuthCard}>
           <p>
             <strong>Welcome To UniMatch</strong>
@@ -157,11 +158,19 @@ const Auth = (props) => {
 };
 
 const mapStateToPorps = (state) => {
-  return {};
+  return {
+    isAuth: state.auth.username !== null,
+    loading: state.auth.loading,
+    signup: state.auth.signup,
+    error: state.auth.error,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onSubmitHandler: (data, signup) =>
+      dispatch(actionCreators.auth(data, signup)),
+  };
 };
 
 export default connect(mapStateToPorps, mapDispatchToProps)(React.memo(Auth));

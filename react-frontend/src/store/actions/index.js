@@ -1,8 +1,20 @@
 export {
-  fetchCollege,
+  fetchColleges,
   fetchCollegesStart,
+  fetchCollegesSuccess,
+  fetchCollegesFail,
+  fetchCollege,
+  fetchCollegeStart,
   fetchCollegeSuccess,
   fetchCollegeFail,
+  switchPage,
 } from "./colleges";
 
-export { logout } from "./auth";
+export {
+  authStart,
+  authSuccess,
+  authFail,
+  auth,
+  autoLogin,
+  logout,
+} from "./auth";

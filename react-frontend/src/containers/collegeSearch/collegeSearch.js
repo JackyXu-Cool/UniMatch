@@ -1,30 +1,46 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions/index";
+import CollegeCard from "../../components/collegeCard/collegeCard";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 import classes from "./collegeSearch.module.css";
 
 const CollegeSearch = (props) => {
-  const { onFetchCollege } = props;
+  const { onFetchColleges, page, colleges, loading } = props;
 
   useEffect(() => {
-    onFetchCollege(217800);
-  }, [onFetchCollege]);
+    onFetchColleges(page);
+  }, [onFetchColleges, page]);
 
-  return <div className={classes.MainLayout}></div>;
+  let mainContent = <Spinner />;
+
+  if (!loading) {
+    mainContent = (
+      <Fragment>
+        {colleges.map((college, index) => (
+          <CollegeCard {...college} key={index} />
+        ))}
+      </Fragment>
+    );
+  }
+
+  return <div className={classes.MainLayout}>{mainContent}</div>;
 };
 
 const mapStateToProps = (state) => {
   return {
-    college: state.college.college,
+    colleges: state.college.colleges,
+    page: state.college.page,
+    loading: state.college.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchCollege: (opeid) => dispatch(actionCreators.fetchCollege(opeid)),
+    onFetchColleges: (range) => dispatch(actionCreators.fetchColleges(range)),
+    onSwitchPage: (page) => dispatch(actionCreators.switchPage(page)),
   };
 };
 
