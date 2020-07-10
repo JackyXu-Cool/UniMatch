@@ -9,3 +9,13 @@ def getData(input, search):
     row = result.fetchone()
     connection.close()
     return row
+
+## Get all data from the database
+def getAll():
+    connection = sqlite3.connect("school-data.db")
+    cursor = connection.cursor()
+    query = "SELECT * FROM schools"
+    cursor.execute(query)
+    result = cursor.fetchall()
+    connection.close()
+    return result

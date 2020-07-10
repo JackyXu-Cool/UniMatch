@@ -8,6 +8,7 @@ A wonderful app for searching and comparing Top 100 US universities, and helping
 ### API
 -------------
 #### GET 
+- /schools/all  **_(response is an array, each element is an object with detailed information of a college)_**
 - /schools/byname  
     - /basic/**string:name**
     - /full/**string:name**
