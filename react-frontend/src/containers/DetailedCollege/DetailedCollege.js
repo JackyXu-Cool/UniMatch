@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import PieChart from "../../components/UI/PieChart/PieChart";
 import LineChart from "../../components/UI/LineChart/LineChart";
-import classes from "./DetailCollege.module.css";
+import classes from "./DetailedCollege.module.css";
 
 const DetailCollege = (props) => {
   const { college } = props;

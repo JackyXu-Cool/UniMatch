@@ -5,7 +5,7 @@ import * as actionCreators from "../../store/actions/index";
 import CollegeCard from "../../components/collegeCard/collegeCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
-import classes from "./CollegeSearch.module.css";
+import classes from "./Colleges.module.css";
 
 const CollegeSearch = (props) => {
   const {

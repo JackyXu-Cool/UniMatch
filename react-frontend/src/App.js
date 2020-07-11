@@ -3,10 +3,10 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { TransitionGroup, Transition } from "react-transition-group";
 
 import Layout from "./components/Layout/Layout";
-import CollegeSearch from "./containers/CollegeSearch/CollegeSearch";
+import CollegeSearch from "./containers/Colleges/Colleges";
 import Auth from "./containers/users/Auth";
 import Logout from "./containers/users/Logout/Logout";
-import DetailCollege from "./containers/DetailCollege/DetailCollege";
+import DetailCollege from "./containers/DetailedCollege/DetailedCollege";
 
 import classes from "./App.module.css";
 
