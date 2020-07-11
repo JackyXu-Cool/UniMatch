@@ -12,13 +12,13 @@ const Layout = (props) => {
   useEffect(() => {
     autoLogin();
   }, [autoLogin]);
-  let footer = null;
+  let pageSwitcher = null;
   if (props.location.pathname === "/") {
     const { onSwitchPage, page } = props;
     const paginationChangeHandler = (event, value) => {
       onSwitchPage(value);
     };
-    footer = (
+    pageSwitcher = (
       <div className={classes.Pagination}>
         <Pagination
           color="secondary"
@@ -35,9 +35,9 @@ const Layout = (props) => {
     <div className={classes.Layout}>
       <nav>
         <Toolbar isAuth={props.isAuth} />
+        {pageSwitcher}
       </nav>
       <main>{props.children}</main>
-      {footer}
     </div>
   );
 };

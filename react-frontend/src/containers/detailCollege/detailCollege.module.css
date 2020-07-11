@@ -1,9 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
 .DetailCollege {
   height: 90vh;
 }
 
+.DetailCollege h1 {
+  font-family: "Dancing Script", cursive;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.DetailCollege h4 {
+  font-family: fantasy;
+}
+
 .Statistics {
-  margin: 0;
+  margin: auto;
+  height: 80vh;
+  width: 95%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
