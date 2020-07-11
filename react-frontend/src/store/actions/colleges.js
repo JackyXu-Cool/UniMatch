@@ -22,47 +22,29 @@ export const fetchCollegesFail = (error) => {
   };
 };
 
-export const fetchColleges = (range) => {
+export const fetchColleges = () => {
   return async (dispatch) => {
     dispatch(fetchCollegesStart());
     try {
-      const colleges = await axiosUni.get(`/schools/byid/basic/${range}`);
-      dispatch(fetchCollegeSuccess(colleges));
+      const response = await axiosUni.get("/schools/all");
+      dispatch(fetchCollegesSuccess(response.data));
     } catch (error) {
       dispatch(fetchCollegesFail(error));
     }
   };
 };
 
-export const fetchCollegeStart = () => {
+export const fetchCollege = (range) => {
   return {
-    type: actionTypes.FETCH_COLLEGE_START,
+    type: actionTypes.FETCH_COLLEGE,
+    range: range,
   };
 };
 
-export const fetchCollegeSuccess = (college) => {
+export const fetchDetailCollege = (index) => {
   return {
-    type: actionTypes.FETCH_COLLEGE_SUCCESS,
-    college: college,
-  };
-};
-
-export const fetchCollegeFail = (error) => {
-  return {
-    type: actionTypes.FETCH_COLLEGE_FAIL,
-    error: error,
-  };
-};
-
-export const fetchCollege = (opeid) => {
-  return async (dispatch) => {
-    dispatch(fetchCollegesStart());
-    try {
-      const response = await axiosUni.get(`/schools/byrank/full/${opeid}`);
-      dispatch(fetchCollegeSuccess(response));
-    } catch (error) {
-      dispatch(fetchCollegeFail(error));
-    }
+    type: actionTypes.FETCH_DETAIL_COLLEGE,
+    index: index,
   };
 };
 

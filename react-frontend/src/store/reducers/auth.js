@@ -2,7 +2,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  username: null,
+  userdata: null,
   loading: false,
   signup: false,
   error: null,
@@ -19,7 +19,7 @@ const authStart = (state, action) => {
 const authSuccess = (state, action) => {
   return {
     ...state,
-    username: action.username,
+    userdata: action.response,
     signup: action.signup,
     loading: false,
     error: null,
@@ -34,8 +34,15 @@ const authFail = (state, action) => {
   };
 };
 
+const confirmFirstLogin = (state, action) => {
+  return {
+    ...state,
+    signup: false,
+  };
+};
+
 const reducer = (state = initialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case actionTypes.AUTH_START:
       return authStart(state, action);
     case actionTypes.AUTH_SUCCESS:
@@ -44,6 +51,8 @@ const reducer = (state = initialState, action) => {
       return authFail(state, action);
     case actionTypes.LOGOUT:
       return initialState;
+    case actionTypes.CONFIRM_FIRST_LOGIN:
+      return confirmFirstLogin(state, action);
     default:
       return state;
   }

@@ -8,16 +8,26 @@
   transition: all 0.3s ease-out;
 }
 
-.AuthSignup {
-  background-color: white;
-}
-
 .AuthCard {
   margin: auto;
   width: 50%;
   height: 70%;
   background-color: inherit;
   transition: all 0.3s ease-out;
+}
+
+.AuthCardSignup {
+  background-color: white;
+}
+
+.CheckIcon {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .AuthCard p {

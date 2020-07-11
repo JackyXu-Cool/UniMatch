@@ -4,9 +4,7 @@ export {
   fetchCollegesSuccess,
   fetchCollegesFail,
   fetchCollege,
-  fetchCollegeStart,
-  fetchCollegeSuccess,
-  fetchCollegeFail,
+  fetchDetailCollege,
   switchPage,
 } from "./colleges";
 
@@ -17,4 +15,5 @@ export {
   auth,
   autoLogin,
   logout,
+  confirmFirstLogin,
 } from "./auth";

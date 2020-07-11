@@ -40,6 +40,7 @@ const Auth = (props) => {
   };
 
   const onConfirmFirstLogin = () => {
+    props.confirmFirstLogin();
     props.history.replace("/");
   };
 
@@ -52,7 +53,6 @@ const Auth = (props) => {
           placeholder="Your Highschool here"
           inputProps={{
             maxLength: 50,
-            pattern: "^[A-Za-z]+$",
             title: "Only letters can be used in this field",
           }}
           required
@@ -65,7 +65,6 @@ const Auth = (props) => {
           placeholder="Your Dreamschool here"
           inputProps={{
             maxLength: 50,
-            pattern: "^[A-Za-z]+$",
             title: "Only letters can be used in this field",
           }}
           required
@@ -77,19 +76,19 @@ const Auth = (props) => {
     );
   }
 
-  let mainClasses = [classes.Auth, classes.AuthSignup];
+  let cardClasses = [classes.AuthCard, classes.AuthCardSignup];
 
   let mainForm = (
-    <Fragment>
+    <div className={classes.CheckIcon}>
       <CheckIcon />
       <Button color="primary" variant="contained" onClick={onConfirmFirstLogin}>
         CONFIRM
       </Button>
-    </Fragment>
+    </div>
   );
 
-  if (!props.signUp) {
-    mainClasses.pop();
+  if (!props.signup) {
+    cardClasses.pop();
     const pattern = isSignUp ? "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" : null;
     mainForm = (
       <Fragment>
@@ -145,8 +144,8 @@ const Auth = (props) => {
 
   return (
     <Fragment>
-      <div className={mainClasses.join(" ")}>
-        <div className={classes.AuthCard}>
+      <div className={classes.Auth}>
+        <div className={cardClasses.join(" ")}>
           <p>
             <strong>Welcome To UniMatch</strong>
           </p>
@@ -159,7 +158,7 @@ const Auth = (props) => {
 
 const mapStateToPorps = (state) => {
   return {
-    isAuth: state.auth.username !== null,
+    isAuth: state.auth.userdata !== null,
     loading: state.auth.loading,
     signup: state.auth.signup,
     error: state.auth.error,
@@ -170,6 +169,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSubmitHandler: (data, signup) =>
       dispatch(actionCreators.auth(data, signup)),
+    confirmFirstLogin: () => dispatch(actionCreators.confirmFirstLogin()),
   };
 };
 

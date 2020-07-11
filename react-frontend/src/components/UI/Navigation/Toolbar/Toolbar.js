@@ -24,6 +24,7 @@ const titles = [
   "MyProfile",
   "Login/Signup",
   "Logout",
+  "Details",
   "Page Not Found",
 ];
 
@@ -45,8 +46,11 @@ const ToolBar = (props) => {
     case "/logout":
       title = titles[3];
       break;
-    default:
+    case "/detail":
       title = titles[4];
+      break;
+    default:
+      title = titles[5];
   }
 
   return (

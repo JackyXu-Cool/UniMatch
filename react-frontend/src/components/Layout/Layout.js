@@ -45,7 +45,7 @@ const Layout = (props) => {
 const mapStateToProps = (state) => {
   return {
     page: state.college.page,
-    isAuth: state.auth.username !== null,
+    isAuth: state.auth.userdata !== null,
   };
 };
 

@@ -28,7 +28,7 @@ const CollegeCard = (props) => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={require(`../../assets/school-image/${props.rank}.jpg`)}
+          image={props.image}
           title={props.name}
         />
         <CardContent>
@@ -36,7 +36,7 @@ const CollegeCard = (props) => {
             {props.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            State: {props.state} Enrollment: {props.enrollment}
+            State: {props.state}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="h3">
             Admission Rate: {props.admission_rate * 100}%
@@ -46,9 +46,10 @@ const CollegeCard = (props) => {
       <CardActions>
         <Link
           component={RouterLink}
-          to={`/detail/${props.rank}`}
+          to="/detail"
           size="small"
           color="primary"
+          onClick={props.fetchDetail}
         >
           Learn More
         </Link>

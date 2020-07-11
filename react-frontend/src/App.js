@@ -1,11 +1,12 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { TransitionGroup, Transition } from "react-transition-group";
 
 import Layout from "./components/Layout/Layout";
 import CollegeSearch from "./containers/collegeSearch/collegeSearch";
 import Auth from "./containers/users/Auth";
 import Logout from "./containers/users/Logout/Logout";
+import DetailCollege from "./containers/detailCollege/detailCollege";
 
 import classes from "./App.module.css";
 
@@ -42,12 +43,12 @@ const App = (props) => {
                       }}
                     >
                       <Switch location={location}>
-                        <Route path="/college/compare" />
                         <Route path="/myprofile" />
-                        <Route path="/detail/:rank" />
+                        <Route path="/detail" component={DetailCollege} />
                         <Route path="/logout" component={Logout} />
                         <Route path="/auth" component={Auth} />
-                        <Route path="/" component={CollegeSearch} />
+                        <Route path="/" exact component={CollegeSearch} />
+                        <Redirect to="/" />
                       </Switch>
                     </div>
                   )}

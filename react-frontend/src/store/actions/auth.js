@@ -8,12 +8,11 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = (response, signup, username) => {
+export const authSuccess = (response, signup) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
     response: response,
     signup: signup,
-    username: username,
   };
 };
 
@@ -30,7 +29,6 @@ export const auth = (data, signup) => {
     try {
       let response;
       if (signup) {
-        console.log(data);
         response = await axiosUni.post("/signup", data);
       } else {
         response = await axiosUni.post("/auth", data);
@@ -39,19 +37,23 @@ export const auth = (data, signup) => {
       localStorage.setItem("password", data.password);
       setTimeout(() => {
         logout();
-      }, 1000);
+      }, 3600000);
       console.log(response);
-      dispatch(authSuccess(response, signup, data.username));
+      dispatch(authSuccess(response, signup));
     } catch (error) {
-      console.log(error);
       dispatch(authFail(error));
     }
   };
 };
 
+export const confirmFirstLogin = () => {
+  return {
+    type: actionTypes.CONFIRM_FIRST_LOGIN,
+  };
+};
+
 export const autoLogin = () => {
   return async (dispatch) => {
-    dispatch(authStart());
     try {
       const response = await axiosUni.post("/auth", {
         username: localStorage.getItem("username"),

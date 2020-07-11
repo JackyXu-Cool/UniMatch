@@ -52,14 +52,16 @@ const MenuItems = (props) => {
             <ListItemText>Colleges</ListItemText>
           </ListItem>
         </Link>
-        <Link to="/myprofile">
-          <ListItem button>
-            <ListItemIcon>
-              <ChildCareIcon />
-            </ListItemIcon>
-            <ListItemText primary={"MyProfile"} />
-          </ListItem>
-        </Link>
+        {props.isAuth && (
+          <Link to="/myprofile">
+            <ListItem button>
+              <ListItemIcon>
+                <ChildCareIcon />
+              </ListItemIcon>
+              <ListItemText primary={"MyProfile"} />
+            </ListItem>
+          </Link>
+        )}
         {props.isAuth ? (
           <Link to="/logout">
             <ListItem button>
