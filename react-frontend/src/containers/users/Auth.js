@@ -26,7 +26,7 @@ const Auth = (props) => {
     } else {
       props.onSubmitHandler(
         {
-          userName: data.userName,
+          username: data.userName,
           password: data.password,
         },
         isSignUp
