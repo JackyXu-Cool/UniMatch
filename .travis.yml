@@ -8,4 +8,4 @@ jobs:
       name: "Quality Test"
       before_install: cd react-frontend
       script: 
-        npm run test
+        npm run lint
