@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import PieChart from "../../components/UI/PieChart/PieChart";
 import LineChart from "../../components/UI/LineChart/LineChart";
+import BarChart from "../../components/UI/BarChart/BarChart";
 import Map from "../../components/UI/Map/Map";
 import PercentageChart from "../../components/UI/PercentageChart/PercentageChart";
 import classes from "./DetailedCollege.module.css";
@@ -58,7 +59,7 @@ const DetailCollege = (props) => {
         <div className={classes.Statistics}>
           <PercentageChart rate={college.admission_rate} />
           <LineChart title="ACT Score Report" data={scoreDataACT} />
-          <LineChart title="SAT Score Report" data={scoreDataSAT} />
+          <BarChart title="SAT Score Report" data={scoreDataSAT} />
           <PieChart title="Race Report" data={raceData} />
           <Map
             longitude={college.longitude}
