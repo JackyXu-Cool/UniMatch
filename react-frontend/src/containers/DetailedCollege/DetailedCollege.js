@@ -35,19 +35,19 @@ const DetailCollege = (props) => {
     const raceData = [
       {
         type: "Asian",
-        value: college.race_asian * 100,
+        value: +(college.race_asian * 100).toFixed(2),
       },
       {
         type: "Black",
-        value: college.race_black * 100,
+        value: +(college.race_black * 100).toFixed(2),
       },
       {
         type: "Hispanic",
-        value: college.race_hispanic * 100,
+        value: +(college.race_hispanic * 100).toFixed(2),
       },
       {
         type: "White",
-        value: college.race_white * 100,
+        value: +(college.race_white * 100).toFixed(2),
       },
     ];
 
