@@ -4,10 +4,8 @@ node_js:
 
 jobs:
   include:
-    - stage: deploy
-      name: "deploy to firebase"
+    - stage: test
+      name: "Quality Test"
       before_install: cd react-frontend
-      before_script: npm install firebase-tools -g
       script: 
-        npm run build
-        firebase deploy --only hosting --token "1//01QaCswrK88a-CgYIARAAGAESNwF-L9IrOfFHMiOcns2j-KAyQAF2C7cN9CdI_8iPz3gLJ1gy1Lp1ENZY_hoUnA5Psl3-BaCJPCE"
+        npm run test
