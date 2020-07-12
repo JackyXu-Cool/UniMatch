@@ -1,4 +1,4 @@
-import sqlite3, uuid
+import sqlite3
 
 class User(object):
     def __init__(self, id, username, password, highschool, dreamschool):
