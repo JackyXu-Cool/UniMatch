@@ -10,8 +10,12 @@
   margin-bottom: 5px;
 }
 
+.DetailCollege h1:hover {
+  text-decoration: underline;
+}
+
 .DetailCollege h4 {
-  font-family: fantasy;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .Statistics {

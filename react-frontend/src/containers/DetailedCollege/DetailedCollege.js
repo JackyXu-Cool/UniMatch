@@ -54,8 +54,9 @@ const DetailCollege = (props) => {
 
     content = (
       <Fragment>
-        <h1>{college.name}</h1>
-        <a href={`http://${college.url}`}>{college.url}</a>
+        <a href={`http://${college.url}`} target="_blank" rel="noopener noreferrer">
+          <h1>{college.name}</h1>
+        </a>
         <div className={classes.Statistics}>
           <PercentageChart rate={college.admission_rate} />
           <LineChart title="ACT Score Report" data={scoreDataACT} />
