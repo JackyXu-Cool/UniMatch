@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions/index";
-import CollegeCard from "../../components/collegeCard/collegeCard";
+import CollegeCard from "../../components/CollegeCard/CollegeCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 import classes from "./Colleges.module.css";
