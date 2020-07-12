@@ -39,7 +39,7 @@ const CollegeCard = (props) => {
             State: {props.state}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="h3">
-            Admission Rate: {props.admission_rate * 100}%
+            Admission Rate: {(props.admission_rate * 100).toFixed(1)}%
           </Typography>
         </CardContent>
       </CardActionArea>
