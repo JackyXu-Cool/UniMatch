@@ -54,7 +54,7 @@ const DetailCollege = (props) => {
 
     content = (
       <Fragment>
-        <a href={`http://${college.url}`} target="_blank" rel="noopener noreferrer">
+        <a href={`https://${college.url}`} target="_blank" rel="noopener noreferrer">
           <h1>{college.name}</h1>
         </a>
         <div className={classes.Statistics}>
