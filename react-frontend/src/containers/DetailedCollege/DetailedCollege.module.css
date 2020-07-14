@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 
 .DetailCollege {
-  height: 90vh;
+  height: auto;
 }
 
 .DetailCollege h1 {
@@ -15,7 +15,7 @@
 }
 
 .DetailCollege h4 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .Statistics {
