@@ -18,8 +18,9 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
-  link: {
-    float: "right",
+  action: {
+    flexFlow: "column",
+    alignItems: "flex-end ",
   },
 });
 
@@ -46,7 +47,7 @@ const CollegeCard = (props) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions style={{ flexFlow: "column", alignItems: "flex-end" }}>
+      <CardActions className={classes.action}>
         <Link
           component={RouterLink}
           to="/detail"
