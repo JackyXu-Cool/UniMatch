@@ -1,12 +1,14 @@
 import React, { useState, Fragment } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Button } from "@material-ui/core";
+import Select from "react-select";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import * as actionCreators from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.module.css";
+import axiosUni from '../../axios-Uni';
 
 import CheckIcon from "../../components/UI/CheckIcon/CheckIcon";
 
@@ -19,7 +21,7 @@ const Auth = (props) => {
           username: data.userName,
           password: data.password,
           highschool: data.highschool,
-          dreamschool: data.dreamschool,
+          dreamschool: data.dreamschool.value,
         },
         isSignUp
       );
@@ -44,6 +46,21 @@ const Auth = (props) => {
     props.history.replace("/");
   };
 
+
+  const schoolList = [];
+
+  const fetchAllSchools = async() => {
+    const allSchools = (await axiosUni.get("/schools/all")).data;
+    allSchools.forEach(school => {
+      const schoolInfo = {};
+      schoolInfo.value = school.name;
+      schoolInfo.label = school.name;
+      schoolList.push(schoolInfo);
+    });
+  }
+
+  fetchAllSchools();
+
   let signUp = null;
   if (isSignUp) {
     signUp = (
@@ -61,16 +78,12 @@ const Auth = (props) => {
           defaultValue=""
         />
         <Controller
-          as={TextField}
-          placeholder="Your Dreamschool here"
-          inputProps={{
-            maxLength: 50,
-            title: "Only letters can be used in this field",
-          }}
+          as={Select}
+          placeholder="Choose Your Dreamschool"
           required
           name="dreamschool"
           control={control}
-          defaultValue=""
+          options={schoolList}
         />
       </Fragment>
     );
