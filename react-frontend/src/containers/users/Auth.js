@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 import * as actionCreators from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.module.css";
-import axiosUni from '../../axios-Uni';
+import axiosUni from "../../axios-Uni";
 
 import CheckIcon from "../../components/UI/CheckIcon/CheckIcon";
 
@@ -46,18 +46,17 @@ const Auth = (props) => {
     props.history.replace("/");
   };
 
-
   const schoolList = [];
 
-  const fetchAllSchools = async() => {
+  const fetchAllSchools = async () => {
     const allSchools = (await axiosUni.get("/schools/all")).data;
-    allSchools.forEach(school => {
+    allSchools.forEach((school) => {
       const schoolInfo = {};
       schoolInfo.value = school.name;
       schoolInfo.label = school.name;
       schoolList.push(schoolInfo);
     });
-  }
+  };
 
   fetchAllSchools();
 
@@ -78,12 +77,11 @@ const Auth = (props) => {
           defaultValue=""
         />
         <Controller
-          as={Select}
+          as={<Select options={schoolList} />}
           placeholder="Choose Your Dreamschool"
           required
           name="dreamschool"
           control={control}
-          options={schoolList}
         />
       </Fragment>
     );
