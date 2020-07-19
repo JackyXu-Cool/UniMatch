@@ -8,7 +8,7 @@ import { Redirect } from "react-router-dom";
 import * as actionCreators from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.module.css";
-import axiosUni from '../../axios-Uni';
+import axiosUni from "../../axios-Uni";
 
 import CheckIcon from "../../components/UI/CheckIcon/CheckIcon";
 
