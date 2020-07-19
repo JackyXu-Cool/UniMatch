@@ -77,7 +77,7 @@ const Auth = (props) => {
           defaultValue=""
         />
         <Controller
-          as={<Select options={schoolList} />}
+          as={<Select className={classes.Select} options={schoolList} />}
           placeholder="Choose Your Dreamschool"
           required
           name="dreamschool"

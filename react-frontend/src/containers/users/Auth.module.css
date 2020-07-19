@@ -49,6 +49,14 @@
   padding: 1vh;
 }
 
+.Select {
+  margin-top: 1rem;
+}
+
+.Select input {
+  margin-top: 0;
+}
+
 @keyframes fontColor {
   0% {
     color: rgb(252, 64, 95);
