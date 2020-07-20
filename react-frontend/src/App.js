@@ -9,6 +9,7 @@ import Logout from "./containers/users/Logout/Logout";
 import DetailCollege from "./containers/DetailedCollege/DetailedCollege";
 
 import classes from "./App.module.css";
+import Profile from "./containers/Profile/Profile";
 
 const App = (props) => {
   return (
@@ -43,7 +44,7 @@ const App = (props) => {
                       }}
                     >
                       <Switch location={location}>
-                        <Route path="/myprofile" />
+                        <Route path="/myprofile" component={Profile} />
                         <Route path="/detail" component={DetailCollege} />
                         <Route path="/logout" component={Logout} />
                         <Route path="/auth" component={Auth} />
