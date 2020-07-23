@@ -101,7 +101,11 @@ Note:  <br />
 
 ### How to run Backend
 -------------
-Install virtual environment inside the "./python-backend"
+First install Numpy library globally
+```
+pip install numpy
+```
+Then, install virtual environment inside the "./python-backend"
 ```shell
 pip install virtualenv
 

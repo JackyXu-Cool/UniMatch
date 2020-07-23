@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_jwt import JWT
 from flask_restful import Api
 from flask_cors import CORS
+import numpy as np
 
 from helper.formatHelper import formatScore, formatBasic, formatFull
 from helper.dataHelper import getData, getAll
@@ -59,6 +60,44 @@ def get_all_data():
         result.append(formatFull(row))
     return jsonify(result)
 
+## This route is to find the best-fit school for a student based on one's scores and preference
+@app.route("/schools/analyze")
+def analyze_school():
+    data = request.json
+    student_score_dict = data["score"] # {"scores": {"value": 1540, "type": "SAT"} }
+    student_score = student_score_dict["value"]
+    exam_type = student_score_dict["type"]
+    max_expense = data["expense"]  ## Maximum attendance fee one can endure
+
+    ## Get all schools' information
+    allSchools = getAll()
+    usefulInfo = []
+
+    # Construct the array to store useful information
+    for school in allSchools:
+        schoolInfo = []
+        schoolInfo.append(school[1])
+        schoolInfo.append(school[35])
+        if exam_type == 'SAT':
+            if isinstance(school[15], int):
+                schoolInfo.append(school[15])
+            else:
+                schoolInfo.append(0)
+        else:
+            if (isinstance(school[22], int)):
+                schoolInfo.append(school[22])
+            else:
+                schoolInfo.append(0)
+        usefulInfo.append(schoolInfo)
+
+    # Make analysis
+    array = np.array(usefulInfo)
+    filtered_array = array[array[:,1] < max_expense]
+    idx = (np.abs(filtered_array[:,2] - student_score)).argmin()
+    data["opeid"] = str(filtered_array[idx][0])
+    return jsonify(data)
+
+## Add signup and get user resource
 api.add_resource(UserRegister, "/signup")
 api.add_resource(UserInfo, "/user/<string:username>")
 
