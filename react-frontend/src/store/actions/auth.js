@@ -52,6 +52,25 @@ export const confirmFirstLogin = () => {
   };
 };
 
+export const fetchByToken = (token) => {
+  return async (dispatch) => {
+    dispatch(authStart());
+    try {
+      const response = await axiosUni.post(`/users/${token}`);
+      dispatch(fetchByTokenSuccess(response));
+    } catch (error) {
+      dispatch(authFail(error));
+    }
+  };
+};
+
+const fetchByTokenSuccess = (data) => {
+  return {
+    type: actionTypes.FETCH_BY_TOKEN,
+    data: data,
+  };
+};
+
 export const autoLogin = () => {
   return async (dispatch) => {
     try {

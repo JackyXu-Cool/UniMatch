@@ -16,4 +16,5 @@ export {
   autoLogin,
   logout,
   confirmFirstLogin,
+  fetchByToken,
 } from "./auth";

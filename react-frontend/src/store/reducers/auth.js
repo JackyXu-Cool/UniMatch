@@ -2,6 +2,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+  tokenData: null,
   userdata: null,
   loading: false,
   signup: false,
@@ -41,6 +42,13 @@ const confirmFirstLogin = (state, action) => {
   };
 };
 
+const tokenDataFetched = (state, action) => {
+  return {
+    ...state,
+    tokenData: action.data,
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_START:
@@ -53,6 +61,8 @@ const reducer = (state = initialState, action) => {
       return initialState;
     case actionTypes.CONFIRM_FIRST_LOGIN:
       return confirmFirstLogin(state, action);
+    case actionTypes.FETCH_BY_TOKEN:
+      return tokenDataFetched(state, action);
     default:
       return state;
   }

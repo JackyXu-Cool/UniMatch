@@ -14,3 +14,4 @@ export const AUTH_FAIL = "AUTH_FAIL";
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
 export const CONFIRM_FIRST_LOGIN = "CONFIRM_FIRST_LOGIN";
+export const FETCH_BY_TOKEN = "FETCH_BY_TOKEN";
