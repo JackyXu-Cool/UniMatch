@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
-import axios from 'axios';
+import axios from "axios";
 import axiosUni from "../../axios-Uni";
 
 export const authStart = () => {
@@ -61,7 +61,8 @@ export const fetchByToken = (token) => {
     dispatch(authStart());
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/user/${localStorage.getItem('username')}`,
+        `${process.env.REACT_APP_SERVER_URL}/user/${localStorage.getItem("username")}`,
+        {"dreamschool": "Harvard University"},
         {
           headers: {
             Authorization: `JWT ${token}`
