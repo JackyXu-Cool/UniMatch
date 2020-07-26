@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
+import axios from 'axios';
 import axiosUni from "../../axios-Uni";
 
 export const authStart = () => {
@@ -59,7 +60,13 @@ export const fetchByToken = (token) => {
   return async (dispatch) => {
     dispatch(authStart());
     try {
-      const response = await axiosUni.post(`/users/${token}`);
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/user/${localStorage.getItem('username')}`,
+        {
+          headers: {
+            Authorization: `JWT ${token}`
+          }
+        });
       dispatch(fetchByTokenSuccess(response));
     } catch (error) {
       dispatch(authFail(error));
