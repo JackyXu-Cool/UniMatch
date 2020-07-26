@@ -82,6 +82,10 @@ const Auth = (props) => {
           required
           name="dreamschool"
           control={control}
+          defaultValue={{
+            value: "Princeton University",
+            label: "Princeton University",
+          }}
         />
       </Fragment>
     );

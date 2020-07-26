@@ -7,8 +7,8 @@ import * as actionCreators from "../../store/actions/index";
 const Profile = (props) => {
   const { userdata, loginData, onFetchByToken } = props;
   useEffect(() => {
-    if (!userdata) {
-      onFetchByToken(loginData.token);
+    if (!userdata && loginData) {
+      onFetchByToken(loginData.data.access_token);
     }
   }, [userdata, loginData, onFetchByToken]);
 

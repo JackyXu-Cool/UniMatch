@@ -29,7 +29,11 @@ export const auth = (data, signup) => {
     try {
       let response;
       if (signup) {
-        response = await axiosUni.post("/signup", data);
+        await axiosUni.post("/signup", data);
+        response = await axiosUni.post("/auth", {
+          username: data.username,
+          password: data.password,
+        });
       } else {
         response = await axiosUni.post("/auth", data);
       }
@@ -38,7 +42,6 @@ export const auth = (data, signup) => {
       setTimeout(() => {
         logout();
       }, 3600000);
-      console.log(response);
       dispatch(authSuccess(response, signup));
     } catch (error) {
       dispatch(authFail(error));
