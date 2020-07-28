@@ -8,6 +8,7 @@ import BarChart from "../../components/UI/BarChart/BarChart";
 import Map from "../../components/UI/Map/Map";
 import PercentageChart from "../../components/UI/PercentageChart/PercentageChart";
 import classes from "./DetailedCollege.module.css";
+import CollegeGrid from "../../components/UI/CollegeGrid/CollegeGrid";
 
 const DetailCollege = (props) => {
   const { college } = props;
@@ -54,7 +55,11 @@ const DetailCollege = (props) => {
 
     content = (
       <Fragment>
-        <a href={`https://${college.url}`} target="_blank" rel="noopener noreferrer">
+        <a
+          href={`https://${college.url}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <h1>{college.name}</h1>
         </a>
         <div className={classes.Statistics}>
@@ -62,6 +67,7 @@ const DetailCollege = (props) => {
           <LineChart title="ACT Score Report" data={scoreDataACT} />
           <BarChart title="SAT Score Report" data={scoreDataSAT} />
           <PieChart title="Race Report" data={raceData} />
+          <CollegeGrid college={college} />
           <Map
             longitude={college.longitude}
             latitude={college.latitude}
