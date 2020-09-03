@@ -2,10 +2,10 @@ from flask import Flask, jsonify, request
 from flask_jwt import JWT
 from flask_restful import Api
 from flask_cors import CORS
-import numpy as np
 
 from helper.formatHelper import formatScore, formatBasic, formatFull
-from helper.dataHelper import getData, getAll
+from helper.analyze import getBestFit
+from helper.dataHelper import getData, getAll, search
 from resource.user import UserRegister, UserInfo
 from security import authenticate, identiy
 from create_table import create_table
@@ -69,33 +69,17 @@ def analyze_school():
     exam_type = student_score_dict["type"]
     max_expense = data["expense"]  ## Maximum attendance fee one can endure
 
-    ## Get all schools' information
-    allSchools = getAll()
-    usefulInfo = []
+    return jsonify(getBestFit(student_score, exam_type, max_expense))
 
-    # Construct the array to store useful information
-    for school in allSchools:
-        schoolInfo = []
-        schoolInfo.append(school[1])
-        schoolInfo.append(school[35])
-        if exam_type == 'SAT':
-            if isinstance(school[15], int):
-                schoolInfo.append(school[15])
-            else:
-                schoolInfo.append(0)
-        else:
-            if (isinstance(school[22], int)):
-                schoolInfo.append(school[22])
-            else:
-                schoolInfo.append(0)
-        usefulInfo.append(schoolInfo)
-
-    # Make analysis
-    array = np.array(usefulInfo)
-    filtered_array = array[array[:,1] < max_expense]
-    idx = (np.abs(filtered_array[:,2] - student_score)).argmin()
-    data["opeid"] = str(filtered_array[idx][0])
-    return jsonify(data)
+@app.route("/search/advanced")
+def advanced_search():
+    data = request.json
+    searchFilter = {}
+    if "size" in data:
+        searchFilter["size"] = data["size"]
+    if "adr" in data:
+        searchFilter["adr"] = data["adr"]
+    return jsonify(search(searchFilter))
 
 ## Add signup and get user resource
 api.add_resource(UserRegister, "/signup")
