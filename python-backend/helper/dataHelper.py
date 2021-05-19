@@ -1,29 +1,33 @@
-import sqlite3
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="mysqljacky",
+    database='unimatch'
+)
 
 ## input is the value, search is either "OPEID" or "name"
 def getData(input, search):
-    connection = sqlite3.connect("school-data.db")
-    cursor = connection.cursor()    
-    query = "SELECT * FROM schools where {}=?".format(search)
-    result = cursor.execute(query, (input,))
-    row = result.fetchone()
-    connection.close()
-    return row
+    cursor = mydb.cursor()
+    query = "select * from schools where {} = '{}'".format(search, input)
+    cursor.execute(query)
+    result = cursor.fetchone()
+    cursor.close()
+    return result
 
 ## Get all data from the database
 def getAll():
-    connection = sqlite3.connect("school-data.db")
-    cursor = connection.cursor()
-    query = "SELECT * FROM schools"
+    cursor = mydb.cursor()
+    query = "select * from schools"
     cursor.execute(query)
     result = cursor.fetchall()
-    connection.close()
+    cursor.close()
     return result
 
 def search(filter):
-    connection = sqlite3.connect("school-data.db")
-    cursor = connection.cursor()
-    max_enrollment = 50000
+    cursor = mydb.cursor()
+    max_enrollment = 80000
     min_enrollment = 0
     size = filter["size"] if "size" in filter else "all"
     admission = filter["adr"] if "adr" in filter else 0
@@ -37,5 +41,5 @@ def search(filter):
     query = "SELECT * FROM schools WHERE (ENROLLMENT BETWEEN {} and {}) AND (ADMISSION_RATE >= {})".format(min_enrollment, max_enrollment, admission)
     cursor.execute(query)
     result = cursor.fetchall()
-    connection.close()
-    return [school[2] for school in result]
+    cursor.close()
+    return [[school[1], school[2]] for school in result]

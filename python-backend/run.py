@@ -71,6 +71,9 @@ def analyze_school():
 
     return jsonify(getBestFit(student_score, exam_type, max_expense))
 
+## This route takes in the prefered size and/or minimum addimission rate for a college
+## do the filtering in the SQL table, and return the opeid and college names that satisfy the 
+## requirement
 @app.route("/search/advanced")
 def advanced_search():
     data = request.json
@@ -80,6 +83,13 @@ def advanced_search():
     if "adr" in data:
         searchFilter["adr"] = data["adr"]
     return jsonify(search(searchFilter))
+
+## This route takes in what the users type in searching bar, make searches
+## on the official site of that college, and return the data in this format:
+## [{"headline": "xxxx", "link": "https://....."}, {"headline":"", "link": "..."}]
+@app.route("/searchInfo/<int:opeid>")
+def searchForInfo():
+    return null
 
 ## Add signup and get user resource
 api.add_resource(UserRegister, "/signup")
