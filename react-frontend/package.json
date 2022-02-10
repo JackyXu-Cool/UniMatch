@@ -15,7 +15,7 @@
     "axios": "^0.19.2",
     "bizcharts": "^4.0.9",
     "eslint": "^6.6.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-datasheet": "^1.4.8",
     "react-dom": "^16.13.1",
